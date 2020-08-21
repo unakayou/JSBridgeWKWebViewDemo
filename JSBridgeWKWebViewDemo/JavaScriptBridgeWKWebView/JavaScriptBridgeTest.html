@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+	<title></title>
+</head>
+<body>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <button onclick="login()">点击登录 unakayou</button>
+    <br>
+    <br>
+    <button onclick="consoleTest()">打印测试</button>
+</body>
+
+<script>
+    var namespace = "Mraid";
+    console.namespace = namespace;
+
+    function login(){
+        bridge.callNative(namespace, "login", {"account":"unakayou"}, "LoginTokenSaved");
+    }
+
+    function LoginTokenSaved(success) {
+        console.log("LoginTokenSaved() runing");
+        if (success) {
+            return "Function LoginTokenSaved() run success";
+        } else {
+            throw new Error("Function LoginTokenSaved() run failed");
+        }
+    }
+    
+    function consoleTest(){
+       console.log("consoleTest");
+    }
+</script>
+</html>
