@@ -24,13 +24,13 @@ function calliOSFunction(handlerName, namespace, funcName, args, callback) {
     window.webkit.messageHandlers[handlerName].postMessage(JSON.stringify(json));
 }
 
-// JS call this func
+// js call this func
 var bridge = window.bridge = {};
-bridge.callNative = function(namespace, funcName, args, callback) {
-    calliOSFunction("bridge", namespace, funcName, args,callback);
+bridge.callNative = function(funcName, args, callback) {
+    calliOSFunction("bridge", bridge.namespace, funcName, args,callback);
 }
 
-// Log at two location
+// log at two location
 console.log = (function(oriLogFunc) {
     return function(str) {
         calliOSFunction("log", console.namespace, "log", str);      // Native log

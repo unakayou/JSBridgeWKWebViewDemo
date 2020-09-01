@@ -8,9 +8,6 @@
 <body>
     <br>
     <br>
-    <br>
-    <br>
-    <br>
     <button onclick="login()">点击登录 unakayou</button>
     <br>
     <br>
@@ -18,11 +15,14 @@
 </body>
 
 <script>
+    // should set the nameSpace
     var namespace = "Mraid";
+    bridge.namespace = namespace;
     console.namespace = namespace;
 
     function login(){
-        bridge.callNative(namespace, "login", {"account":"unakayou"}, "LoginTokenSaved");
+        // call native function login(), parameters:{"account":"unakayou"}, callback js function LoginTokenSaved();
+        bridge.callNative("login", {"account":"unakayou"}, "LoginTokenSaved");
     }
 
     function LoginTokenSaved(success) {
